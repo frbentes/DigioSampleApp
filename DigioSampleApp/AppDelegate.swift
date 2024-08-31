@@ -10,11 +10,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let viewController = HomeViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
+        let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
-        
         window?.rootViewController = navigationController
+        
+        let coordinator = HomeCoordinator(with: navigationController)
+        coordinator.start()
         
         return true
     }
