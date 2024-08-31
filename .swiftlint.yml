@@ -1,0 +1,44 @@
+excluded:
+  - DerivedData
+
+disabled_rules:
+  - orphaned_doc_comment
+  - leading_whitespace
+  - trailing_whitespace
+
+opt_in_rules:
+  - indentation_width
+  - force_unwrapping
+  - redundant_type_annotation
+  - force_try
+  - operator_usage_whitespace
+
+force_cast: warning
+
+indentation_width:
+  indentation_width: 4
+
+line_length:
+  ignores_urls: true
+  ignores_function_declarations: true
+  ignores_comments: true
+
+function_body_length:
+    warning: 70
+
+identifier_name:
+  excluded:
+    - i
+    - id
+    - x
+    - y
+    - z
+
+custom_rules:
+  array_constructor:
+    name: "Array/Dictionary initializer"
+    regex: '[let,var] .+ = (\[.+\]\(\))'
+    capture_group: 1
+    message: "Use explicit type annotation when initializing empty arrays and dictionaries"
+    severity: warning
+

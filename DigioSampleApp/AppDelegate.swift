@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let viewController: ViewController = ViewController()
+        let viewController = ViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.isNavigationBarHidden = true
         
@@ -19,4 +19,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-
