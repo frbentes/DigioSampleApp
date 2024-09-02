@@ -18,6 +18,11 @@
 		469C342F2C83DA7E0007A698 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C342E2C83DA7E0007A698 /* BaseCoordinator.swift */; };
 		469C34312C83DAC80007A698 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34302C83DAC80007A698 /* HomeCoordinator.swift */; };
 		469C34342C83DC440007A698 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34332C83DC440007A698 /* Service.swift */; };
+		469C34392C8582AB0007A698 /* HomeGreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34382C8582AB0007A698 /* HomeGreetingView.swift */; };
+		469C343B2C8583730007A698 /* HomeCashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C343A2C8583730007A698 /* HomeCashView.swift */; };
+		469C343D2C8583C50007A698 /* HomeSpotlightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C343C2C8583C50007A698 /* HomeSpotlightCell.swift */; };
+		469C343F2C85841F0007A698 /* HomeProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C343E2C85841F0007A698 /* HomeProductCell.swift */; };
+		469C34422C8584E20007A698 /* HomeUIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34412C8584E20007A698 /* HomeUIConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,11 @@
 		469C342E2C83DA7E0007A698 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		469C34302C83DAC80007A698 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		469C34332C83DC440007A698 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		469C34382C8582AB0007A698 /* HomeGreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGreetingView.swift; sourceTree = "<group>"; };
+		469C343A2C8583730007A698 /* HomeCashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCashView.swift; sourceTree = "<group>"; };
+		469C343C2C8583C50007A698 /* HomeSpotlightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpotlightCell.swift; sourceTree = "<group>"; };
+		469C343E2C85841F0007A698 /* HomeProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductCell.swift; sourceTree = "<group>"; };
+		469C34412C8584E20007A698 /* HomeUIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +128,10 @@
 		469C34252C83D7750007A698 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				469C34262C83D7980007A698 /* HomeViewController.swift */,
-				469C34282C83D7D60007A698 /* ProductDetailViewController.swift */,
+				469C34352C857E550007A698 /* ViewController */,
+				469C34362C857E8E0007A698 /* Cell */,
+				469C34372C857EBF0007A698 /* Custom */,
+				469C34402C8584990007A698 /* UIConstants */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -147,6 +159,41 @@
 				469C34332C83DC440007A698 /* Service.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		469C34352C857E550007A698 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				469C34262C83D7980007A698 /* HomeViewController.swift */,
+				469C34282C83D7D60007A698 /* ProductDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		469C34362C857E8E0007A698 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				469C343C2C8583C50007A698 /* HomeSpotlightCell.swift */,
+				469C343E2C85841F0007A698 /* HomeProductCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		469C34372C857EBF0007A698 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				469C34382C8582AB0007A698 /* HomeGreetingView.swift */,
+				469C343A2C8583730007A698 /* HomeCashView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		469C34402C8584990007A698 /* UIConstants */ = {
+			isa = PBXGroup;
+			children = (
+				469C34412C8584E20007A698 /* HomeUIConstants.swift */,
+			);
+			path = UIConstants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				469C34272C83D7980007A698 /* HomeViewController.swift in Sources */,
+				469C343D2C8583C50007A698 /* HomeSpotlightCell.swift in Sources */,
 				469C34242C83D6600007A698 /* ProductDetailModel.swift in Sources */,
 				469C342C2C83D8530007A698 /* HomeViewModel.swift in Sources */,
 				469C33F02C8237BC0007A698 /* AppDelegate.swift in Sources */,
@@ -279,6 +327,10 @@
 				469C34342C83DC440007A698 /* Service.swift in Sources */,
 				469C34312C83DAC80007A698 /* HomeCoordinator.swift in Sources */,
 				469C34222C83D62B0007A698 /* HomeModel.swift in Sources */,
+				469C34392C8582AB0007A698 /* HomeGreetingView.swift in Sources */,
+				469C343F2C85841F0007A698 /* HomeProductCell.swift in Sources */,
+				469C343B2C8583730007A698 /* HomeCashView.swift in Sources */,
+				469C34422C8584E20007A698 /* HomeUIConstants.swift in Sources */,
 				469C34292C83D7D60007A698 /* ProductDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
