@@ -1,5 +1,6 @@
 
 import UIKit
+import Kingfisher
 
 class HomeCashView: UIView {
     var data: Cash? {
@@ -24,7 +25,6 @@ class HomeCashView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         label.textColor = UIColor(named: "blue-brand")
-        label.text = "digio"
         return label
     }()
     
@@ -33,7 +33,6 @@ class HomeCashView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         label.textColor = UIColor(named: "gray-asphalt")
-        label.text = "Cash"
         return label
     }()
     
@@ -90,7 +89,21 @@ class HomeCashView: UIView {
     }
     
     private func refreshUI() {
-        guard let data = data else { return }
-        print(data)
+        guard let data = data else {
+            labelCaption.text = "digio"
+            labelCash.text = "Cash"
+            cashImageView.image = UIImage(named: "ic-placeholder-image")
+            return
+        }
+        let line = data.title.split(separator: " ", maxSplits: 1)
+        labelCaption.text = String(line[0])
+        labelCash.text = String(line[1])
+        if let bannerURL = data.bannerURL {
+            let url = URL(string: bannerURL)
+            cashImageView.kf.setImage(with: url,
+                                           placeholder: UIImage(named: "ic-placeholder-image"))
+        } else {
+            cashImageView.image = UIImage(named: "ic-placeholder-image")
+        }
     }
 }

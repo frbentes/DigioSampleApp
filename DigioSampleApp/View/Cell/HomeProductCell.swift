@@ -1,5 +1,6 @@
 
 import UIKit
+import Kingfisher
 
 class HomeProductCell: UICollectionViewCell {
     var data: Product? {
@@ -54,11 +55,23 @@ class HomeProductCell: UICollectionViewCell {
     }
     
     private func setupConstraints() {
-        
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            productImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            productImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+        ])
     }
     
     private func refreshUI() {
-        guard let data = data else { return }
-        print(data)
+        guard let data = data, let imageURL = data.imageURL else {
+            productImageView.image = UIImage(named: "ic-photo")
+            return
+        }
+        let url = URL(string: imageURL)
+        productImageView.kf.setImage(with: url,
+                                     placeholder: UIImage(named: "ic-photo"))
     }
 }

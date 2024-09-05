@@ -23,6 +23,8 @@
 		469C343D2C8583C50007A698 /* HomeSpotlightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C343C2C8583C50007A698 /* HomeSpotlightCell.swift */; };
 		469C343F2C85841F0007A698 /* HomeProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C343E2C85841F0007A698 /* HomeProductCell.swift */; };
 		469C34422C8584E20007A698 /* HomeUIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34412C8584E20007A698 /* HomeUIConstants.swift */; };
+		469C34462C87B2E60007A698 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 469C34452C87B2E60007A698 /* Kingfisher */; };
+		469C34482C88E77C0007A698 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34472C88E77C0007A698 /* ProductDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,7 @@
 		469C343C2C8583C50007A698 /* HomeSpotlightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpotlightCell.swift; sourceTree = "<group>"; };
 		469C343E2C85841F0007A698 /* HomeProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductCell.swift; sourceTree = "<group>"; };
 		469C34412C8584E20007A698 /* HomeUIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIConstants.swift; sourceTree = "<group>"; };
+		469C34472C88E77C0007A698 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				469C34462C87B2E60007A698 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +85,7 @@
 				469C33EE2C8237BC0007A698 /* DigioSampleApp */,
 				469C34052C8237BF0007A698 /* DigioSampleAppTests */,
 				469C33ED2C8237BC0007A698 /* Products */,
+				469C34442C87B2E60007A698 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				469C342B2C83D8530007A698 /* HomeViewModel.swift */,
+				469C34472C88E77C0007A698 /* ProductDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -196,6 +202,13 @@
 			path = UIConstants;
 			sourceTree = "<group>";
 		};
+		469C34442C87B2E60007A698 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -213,6 +226,9 @@
 			dependencies = (
 			);
 			name = DigioSampleApp;
+			packageProductDependencies = (
+				469C34452C87B2E60007A698 /* Kingfisher */,
+			);
 			productName = DigioSampleApp;
 			productReference = 469C33EC2C8237BC0007A698 /* DigioSampleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -263,6 +279,9 @@
 				Base,
 			);
 			mainGroup = 469C33E32C8237BC0007A698;
+			packageReferences = (
+				469C34432C87B0CA0007A698 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 469C33ED2C8237BC0007A698 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -326,6 +345,7 @@
 				469C342F2C83DA7E0007A698 /* BaseCoordinator.swift in Sources */,
 				469C34342C83DC440007A698 /* Service.swift in Sources */,
 				469C34312C83DAC80007A698 /* HomeCoordinator.swift in Sources */,
+				469C34482C88E77C0007A698 /* ProductDetailViewModel.swift in Sources */,
 				469C34222C83D62B0007A698 /* HomeModel.swift in Sources */,
 				469C34392C8582AB0007A698 /* HomeGreetingView.swift in Sources */,
 				469C343F2C85841F0007A698 /* HomeProductCell.swift in Sources */,
@@ -606,6 +626,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		469C34432C87B0CA0007A698 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		469C34452C87B2E60007A698 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 469C34432C87B0CA0007A698 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 469C33E42C8237BC0007A698 /* Project object */;
 }

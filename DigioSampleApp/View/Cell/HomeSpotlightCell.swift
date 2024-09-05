@@ -1,5 +1,6 @@
 
 import UIKit
+import Kingfisher
 
 class HomeSpotlightCell: UICollectionViewCell {
     var data: Spotlight? {
@@ -75,7 +76,12 @@ class HomeSpotlightCell: UICollectionViewCell {
     }
     
     private func refreshUI() {
-        guard let data = data else { return }
-        print(data)
+        guard let data = data, let bannerURL = data.bannerURL else {
+            imageViewSpotlight.image = UIImage(named: "ic-placeholder-image")
+            return
+        }
+        let url = URL(string: bannerURL)
+        imageViewSpotlight.kf.setImage(with: url,
+                                       placeholder: UIImage(named: "ic-placeholder-image"))
     }
 }
