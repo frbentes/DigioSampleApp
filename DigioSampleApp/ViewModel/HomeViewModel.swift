@@ -14,8 +14,14 @@ final class HomeViewModel {
     private var homeData: HomeData?
     private var isLoadingHomeData: Bool = false
     
-    public weak var delegate: HomeViewModelDelegate?
+    public weak var viewDelegate: HomeViewModelDelegate?
     public weak var coordinatorDelegate: HomeViewModelCoordinatorDelegate?
+    
+    private let service: HomeServiceProtocol
+    
+    init(service: HomeServiceProtocol = HomeService()) {
+        self.service = service
+    }
     
     // MARK: - Public Gets
     public func getSpotlightItems() -> [Spotlight] {
@@ -42,16 +48,16 @@ final class HomeViewModel {
     
     public func getHomeData() {
         self.isLoadingHomeData = true
-        Service().getProducts(completion: { [weak self] (homeData, error) in
+        service.fetchProducts(completion: { [weak self] (homeData, error) in
             self?.isLoadingHomeData = false
             if error == nil {
                 guard let homeData = homeData else {
-                    self?.delegate?.showGenericError()
+                    self?.viewDelegate?.showGenericError()
                     return
                 }
-                self?.delegate?.showHomeData(homeData: homeData)
+                self?.viewDelegate?.showHomeData(homeData: homeData)
             } else {
-                self?.delegate?.showGenericError()
+                self?.viewDelegate?.showGenericError()
             }
         })
     }

@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
 //        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
 //        layout.minimumLineSpacing = 0
 //        layout.minimumInteritemSpacing = 0
-        let collectionView = UICollectionView(frame: self.view.frame, 
+        let collectionView = UICollectionView(frame: self.view.frame,
                                               collectionViewLayout: Layouts.collectionFlowLayout)
         collectionView.register(HomeSpotlightCell.self, forCellWithReuseIdentifier: HomeSpotlightCell.identifier)
         collectionView.dataSource = self
@@ -79,11 +79,12 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         
         configureUI()
         setupConstraints()
         
-        viewModel.delegate = self
+        viewModel.viewDelegate = self
         viewModel.getHomeData()
     }
     

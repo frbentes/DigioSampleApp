@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		469C33F02C8237BC0007A698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C33EF2C8237BC0007A698 /* AppDelegate.swift */; };
 		469C33F92C8237BE0007A698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 469C33F82C8237BE0007A698 /* Assets.xcassets */; };
-		469C34072C8237BF0007A698 /* DigioSampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34062C8237BF0007A698 /* DigioSampleAppTests.swift */; };
 		469C34222C83D62B0007A698 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34212C83D62B0007A698 /* HomeModel.swift */; };
 		469C34242C83D6600007A698 /* ProductDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34232C83D6600007A698 /* ProductDetailModel.swift */; };
 		469C34272C83D7980007A698 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34262C83D7980007A698 /* HomeViewController.swift */; };
@@ -17,7 +16,7 @@
 		469C342C2C83D8530007A698 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C342B2C83D8530007A698 /* HomeViewModel.swift */; };
 		469C342F2C83DA7E0007A698 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C342E2C83DA7E0007A698 /* BaseCoordinator.swift */; };
 		469C34312C83DAC80007A698 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34302C83DAC80007A698 /* HomeCoordinator.swift */; };
-		469C34342C83DC440007A698 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34332C83DC440007A698 /* Service.swift */; };
+		469C34342C83DC440007A698 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34332C83DC440007A698 /* HomeService.swift */; };
 		469C34392C8582AB0007A698 /* HomeGreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34382C8582AB0007A698 /* HomeGreetingView.swift */; };
 		469C343B2C8583730007A698 /* HomeCashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C343A2C8583730007A698 /* HomeCashView.swift */; };
 		469C343D2C8583C50007A698 /* HomeSpotlightCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C343C2C8583C50007A698 /* HomeSpotlightCell.swift */; };
@@ -25,6 +24,10 @@
 		469C34422C8584E20007A698 /* HomeUIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34412C8584E20007A698 /* HomeUIConstants.swift */; };
 		469C34462C87B2E60007A698 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 469C34452C87B2E60007A698 /* Kingfisher */; };
 		469C34482C88E77C0007A698 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34472C88E77C0007A698 /* ProductDetailViewModel.swift */; };
+		469C344A2C8A96300007A698 /* HomeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34492C8A96300007A698 /* HomeViewModelTest.swift */; };
+		469C344C2C8ADB8A0007A698 /* products_list.json in Resources */ = {isa = PBXBuildFile; fileRef = 469C344B2C8ADB8A0007A698 /* products_list.json */; };
+		469C344E2C8AE4B40007A698 /* JsonModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C344D2C8AE4B40007A698 /* JsonModelFactory.swift */; };
+		469C34502C8D31230007A698 /* ProductDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C344F2C8D31230007A698 /* ProductDetailViewModelTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +46,6 @@
 		469C33F82C8237BE0007A698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		469C33FD2C8237BE0007A698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		469C34022C8237BF0007A698 /* DigioSampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigioSampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		469C34062C8237BF0007A698 /* DigioSampleAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigioSampleAppTests.swift; sourceTree = "<group>"; };
 		469C34212C83D62B0007A698 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		469C34232C83D6600007A698 /* ProductDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailModel.swift; sourceTree = "<group>"; };
 		469C34262C83D7980007A698 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -51,13 +53,17 @@
 		469C342B2C83D8530007A698 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		469C342E2C83DA7E0007A698 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		469C34302C83DAC80007A698 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		469C34332C83DC440007A698 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		469C34332C83DC440007A698 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		469C34382C8582AB0007A698 /* HomeGreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeGreetingView.swift; sourceTree = "<group>"; };
 		469C343A2C8583730007A698 /* HomeCashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCashView.swift; sourceTree = "<group>"; };
 		469C343C2C8583C50007A698 /* HomeSpotlightCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSpotlightCell.swift; sourceTree = "<group>"; };
 		469C343E2C85841F0007A698 /* HomeProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductCell.swift; sourceTree = "<group>"; };
 		469C34412C8584E20007A698 /* HomeUIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIConstants.swift; sourceTree = "<group>"; };
 		469C34472C88E77C0007A698 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
+		469C34492C8A96300007A698 /* HomeViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTest.swift; sourceTree = "<group>"; };
+		469C344B2C8ADB8A0007A698 /* products_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = products_list.json; sourceTree = "<group>"; };
+		469C344D2C8AE4B40007A698 /* JsonModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModelFactory.swift; sourceTree = "<group>"; };
+		469C344F2C8D31230007A698 /* ProductDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModelTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +122,10 @@
 		469C34052C8237BF0007A698 /* DigioSampleAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				469C34062C8237BF0007A698 /* DigioSampleAppTests.swift */,
+				469C34492C8A96300007A698 /* HomeViewModelTest.swift */,
+				469C344F2C8D31230007A698 /* ProductDetailViewModelTest.swift */,
+				469C344B2C8ADB8A0007A698 /* products_list.json */,
+				469C344D2C8AE4B40007A698 /* JsonModelFactory.swift */,
 			);
 			path = DigioSampleAppTests;
 			sourceTree = "<group>";
@@ -162,7 +171,7 @@
 		469C34322C83DC230007A698 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				469C34332C83DC440007A698 /* Service.swift */,
+				469C34332C83DC440007A698 /* HomeService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -305,6 +314,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				469C344C2C8ADB8A0007A698 /* products_list.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +353,7 @@
 				469C342C2C83D8530007A698 /* HomeViewModel.swift in Sources */,
 				469C33F02C8237BC0007A698 /* AppDelegate.swift in Sources */,
 				469C342F2C83DA7E0007A698 /* BaseCoordinator.swift in Sources */,
-				469C34342C83DC440007A698 /* Service.swift in Sources */,
+				469C34342C83DC440007A698 /* HomeService.swift in Sources */,
 				469C34312C83DAC80007A698 /* HomeCoordinator.swift in Sources */,
 				469C34482C88E77C0007A698 /* ProductDetailViewModel.swift in Sources */,
 				469C34222C83D62B0007A698 /* HomeModel.swift in Sources */,
@@ -359,7 +369,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				469C34072C8237BF0007A698 /* DigioSampleAppTests.swift in Sources */,
+				469C344E2C8AE4B40007A698 /* JsonModelFactory.swift in Sources */,
+				469C344A2C8A96300007A698 /* HomeViewModelTest.swift in Sources */,
+				469C34502C8D31230007A698 /* ProductDetailViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
