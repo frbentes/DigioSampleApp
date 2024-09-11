@@ -9,7 +9,6 @@ final class HomeViewModelTest: XCTestCase {
     var mockViewDelegate: HomeViewModelDelegateMock!
     var mockCoordinatorDelegate: HomeViewModelCoordinatorDelegateMock!
     
-    
     override func setUp() {
         super.setUp()
         mockHomeService = MockHomeService()
@@ -20,7 +19,7 @@ final class HomeViewModelTest: XCTestCase {
         sut.viewDelegate = mockViewDelegate
         sut.coordinatorDelegate = mockCoordinatorDelegate
     }
-
+    
     override func tearDown() {
         sut = nil
         mockHomeService = nil
@@ -36,9 +35,14 @@ final class HomeViewModelTest: XCTestCase {
         
         // When
         sut.getHomeData()
+        
+        // Assert
+        XCTAssert(mockViewDelegate.startLoadingCalled)
+        
         mockHomeService.fetchSuccess()
         
         // Assert
+        XCTAssert(mockViewDelegate.finishLoadingCalled)
         XCTAssert(mockViewDelegate.showHomeDataCalled)
     }
     
@@ -48,9 +52,14 @@ final class HomeViewModelTest: XCTestCase {
         
         // When
         sut.getHomeData()
+        
+        // Assert
+        XCTAssert(mockViewDelegate.startLoadingCalled)
+        
         mockHomeService.fetchFail(error: error)
         
         // Assert
+        XCTAssert(mockViewDelegate.finishLoadingCalled)
         XCTAssert(mockViewDelegate.showGenericErrorCalled)
     }
     
@@ -86,14 +95,24 @@ class MockHomeService: HomeServiceProtocol {
 }
 
 class HomeViewModelDelegateMock: HomeViewModelDelegate {
+    var startLoadingCalled: Bool = false
+    var finishLoadingCalled: Bool = false
     var showHomeDataCalled: Bool = false
     var showGenericErrorCalled: Bool = false
+    
+    func startLoadingData() {
+        startLoadingCalled = true
+    }
+    
+    func finishLoadingData() {
+        finishLoadingCalled = true
+    }
     
     func showHomeData(homeData: DigioSampleApp.HomeData) {
         showHomeDataCalled = true
     }
     
-    func showGenericError() {
+    func showGenericError(message: String) {
         showGenericErrorCalled = true
     }
 }
@@ -122,6 +141,7 @@ class StubGenerator {
     func stubProductDetail() -> ProductDetail {
         return ProductDetail(title: "digio Cash",
                              imageURL: "https://s3-sa-east-1.amazonaws.com/digio-exame/cash_banner.png",
-                             description: "Dinheiro na conta sem complicaÃ§Ã£o.")
+                             description: "Dinheiro na conta sem complicaÃ§Ã£o.",
+                             type: .cash)
     }
 }

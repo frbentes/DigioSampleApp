@@ -65,9 +65,18 @@ class HomeViewController: UIViewController {
         return view
     }()
     
+    private lazy var labelProducts: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.textColor = UIColor(named: "blue-brand")
+        label.text = "Produtos"
+        return label
+    }()
+    
     private lazy var collectionViewProduct: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        layout.sectionInset = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
@@ -115,6 +124,7 @@ class HomeViewController: UIViewController {
         viewContent.addSubview(viewGreeting)
         viewContent.addSubview(collectionViewSpotlight)
         viewContent.addSubview(viewCash)
+        viewContent.addSubview(labelProducts)
         viewContent.addSubview(collectionViewProduct)
         configureRefreshControl()
     }
@@ -152,11 +162,15 @@ class HomeViewController: UIViewController {
             viewCash.leadingAnchor.constraint(equalTo: viewContent.leadingAnchor, constant: 16),
             viewCash.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor, constant: -16),
             
-            collectionViewProduct.topAnchor.constraint(equalTo: viewCash.bottomAnchor, constant: 4),
-            collectionViewProduct.leadingAnchor.constraint(equalTo: viewContent.leadingAnchor, constant: 16),
+            labelProducts.topAnchor.constraint(equalTo: viewCash.bottomAnchor, constant: 20),
+            labelProducts.leadingAnchor.constraint(equalTo: viewContent.leadingAnchor, constant: 32),
+            labelProducts.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor, constant: -16),
+            
+            collectionViewProduct.topAnchor.constraint(equalTo: labelProducts.bottomAnchor, constant: 4),
+            collectionViewProduct.leadingAnchor.constraint(equalTo: viewContent.leadingAnchor, constant: 24),
             collectionViewProduct.trailingAnchor.constraint(equalTo: viewContent.trailingAnchor, constant: -16),
             collectionViewProduct.bottomAnchor.constraint(equalTo: viewContent.bottomAnchor),
-            collectionViewProduct.heightAnchor.constraint(equalToConstant: 152)
+            collectionViewProduct.heightAnchor.constraint(equalToConstant: 136)
         ])
     }
     

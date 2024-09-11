@@ -52,32 +52,32 @@ final class HomeViewModel {
         self.isLoadingHomeData = true
         self.viewDelegate?.startLoadingData()
         service.fetchProducts(completion: { [weak self] (homeData, error) in
-            self?.isLoadingHomeData = false
-            self?.homeData = homeData
-            self?.viewDelegate?.finishLoadingData()
-            if error == nil {
-                guard let homeData = homeData else {
-                    self?.viewDelegate?.showGenericError(message: "Dados inválidos.")
-                    return
-                }
-                self?.viewDelegate?.showHomeData(homeData: homeData)
+            guard let self = self else { return }
+            self.isLoadingHomeData = false
+            self.homeData = homeData
+            self.viewDelegate?.finishLoadingData()
+            if let homeData = homeData {
+                self.viewDelegate?.showHomeData(homeData: homeData)
+            } else if let error = error {
+                let message = self.messageFromError(error)
+                self.viewDelegate?.showGenericError(message: message)
             } else {
-                guard let error = error else {
-                    self?.viewDelegate?.showGenericError(message: "Dados inválidos.")
-                    return
-                }
-                let message: String
-                switch error {
-                case .invalidData:
-                    message = "Dados inválidos."
-                case .invalidResponse:
-                    message = "Resposta inválida."
-                case .message(let err):
-                    message = err?.localizedDescription ?? "Sem mensagem de erro disponível."
-                }
-                self?.viewDelegate?.showGenericError(message: message)
+                self.viewDelegate?.showGenericError(message: "Erro inesperado.")
             }
         })
+    }
+    
+    private func messageFromError(_ error: ServiceError) -> String {
+        let message: String
+        switch error {
+        case .invalidData:
+            message = "Dados inválidos."
+        case .invalidResponse:
+            message = "Resposta inválida."
+        case .message(let err):
+            message = err?.localizedDescription ?? "Sem mensagem de erro disponível."
+        }
+        return message
     }
     
     public func showProductDetail(productDetail: ProductDetail) {

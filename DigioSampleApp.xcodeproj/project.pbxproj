@@ -28,7 +28,6 @@
 		469C344E2C8AE4B40007A698 /* JsonModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C344D2C8AE4B40007A698 /* JsonModelFactory.swift */; };
 		469C34502C8D31230007A698 /* ProductDetailViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C344F2C8D31230007A698 /* ProductDetailViewModelTest.swift */; };
 		469C34522C8E947F0007A698 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34512C8E947F0007A698 /* ErrorView.swift */; };
-		469C34542C8EE7AC0007A698 /* HomeProductSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34532C8EE7AC0007A698 /* HomeProductSectionHeaderView.swift */; };
 		469C34572C8F7D4A0007A698 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34562C8F7D4A0007A698 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +65,6 @@
 		469C344D2C8AE4B40007A698 /* JsonModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModelFactory.swift; sourceTree = "<group>"; };
 		469C344F2C8D31230007A698 /* ProductDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModelTest.swift; sourceTree = "<group>"; };
 		469C34512C8E947F0007A698 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		469C34532C8EE7AC0007A698 /* HomeProductSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProductSectionHeaderView.swift; sourceTree = "<group>"; };
 		469C34562C8F7D4A0007A698 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,7 +202,6 @@
 				469C34382C8582AB0007A698 /* HomeGreetingView.swift */,
 				469C343A2C8583730007A698 /* HomeCashView.swift */,
 				469C34512C8E947F0007A698 /* ErrorView.swift */,
-				469C34532C8EE7AC0007A698 /* HomeProductSectionHeaderView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -364,7 +361,6 @@
 				469C34482C88E77C0007A698 /* ProductDetailViewModel.swift in Sources */,
 				469C34222C83D62B0007A698 /* HomeModel.swift in Sources */,
 				469C34392C8582AB0007A698 /* HomeGreetingView.swift in Sources */,
-				469C34542C8EE7AC0007A698 /* HomeProductSectionHeaderView.swift in Sources */,
 				469C34572C8F7D4A0007A698 /* UIView+Extension.swift in Sources */,
 				469C343F2C85841F0007A698 /* HomeProductCell.swift in Sources */,
 				469C343B2C8583730007A698 /* HomeCashView.swift in Sources */,
