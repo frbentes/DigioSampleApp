@@ -11,6 +11,7 @@ class HomeCoordinator: BaseCoordinator {
     
     init(with navigationController: UINavigationController) {
         self.navigationController = navigationController
+        self.navigationController?.isNavigationBarHidden = true
         viewModel = HomeViewModel()
         guard let viewModel = viewModel else { return }
         viewModel.coordinatorDelegate = self

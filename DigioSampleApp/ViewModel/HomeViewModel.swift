@@ -2,8 +2,10 @@
 import Foundation
 
 protocol HomeViewModelDelegate: AnyObject {
+    func startLoadingData()
+    func finishLoadingData()
     func showHomeData(homeData: HomeData)
-    func showGenericError()
+    func showGenericError(message: String)
 }
 
 protocol HomeViewModelCoordinatorDelegate: AnyObject {
@@ -48,16 +50,32 @@ final class HomeViewModel {
     
     public func getHomeData() {
         self.isLoadingHomeData = true
+        self.viewDelegate?.startLoadingData()
         service.fetchProducts(completion: { [weak self] (homeData, error) in
             self?.isLoadingHomeData = false
+            self?.homeData = homeData
+            self?.viewDelegate?.finishLoadingData()
             if error == nil {
                 guard let homeData = homeData else {
-                    self?.viewDelegate?.showGenericError()
+                    self?.viewDelegate?.showGenericError(message: "Dados inválidos.")
                     return
                 }
                 self?.viewDelegate?.showHomeData(homeData: homeData)
             } else {
-                self?.viewDelegate?.showGenericError()
+                guard let error = error else {
+                    self?.viewDelegate?.showGenericError(message: "Dados inválidos.")
+                    return
+                }
+                let message: String
+                switch error {
+                case .invalidData:
+                    message = "Dados inválidos."
+                case .invalidResponse:
+                    message = "Resposta inválida."
+                case .message(let err):
+                    message = err?.localizedDescription ?? "Sem mensagem de erro disponível."
+                }
+                self?.viewDelegate?.showGenericError(message: message)
             }
         })
     }

@@ -10,6 +10,10 @@ class ProductDetailViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ic-arrow"), for: .normal)
         button.imageView?.transform = .init(rotationAngle: .pi)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -25,8 +29,8 @@ class ProductDetailViewController: UIViewController {
     
     private lazy var imageViewProduct: UIImageView = {
         let imageView = UIImageView(image: nil)
-        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -36,6 +40,7 @@ class ProductDetailViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.textColor = UIColor(named: "black-charcoal")
         label.textAlignment = .left
+        label.numberOfLines = 0
         return label
     }()
     
@@ -52,15 +57,21 @@ class ProductDetailViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         
         configureUI()
         setupConstraints()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        setupImageType()
+    }
+    
+    override func viewDidLayoutSubviews() {
         setupData()
-        
-        self.view.backgroundColor = .green
     }
     
     private func configureUI() {
@@ -72,34 +83,49 @@ class ProductDetailViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            buttonBack.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            buttonBack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            buttonBack.heightAnchor.constraint(equalToConstant: 32),
-            buttonBack.widthAnchor.constraint(equalToConstant: 32),
-            labelTitle.leadingAnchor.constraint(equalTo: buttonBack.trailingAnchor, constant: 20),
-            labelTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            buttonBack.topAnchor.constraint(equalTo: view.topAnchor, constant: 56),
+            buttonBack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            buttonBack.heightAnchor.constraint(equalToConstant: 40),
+            buttonBack.widthAnchor.constraint(equalToConstant: 40),
             labelTitle.centerYAnchor.constraint(equalTo: buttonBack.centerYAnchor),
-            imageViewProduct.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 20),
-            imageViewProduct.heightAnchor.constraint(equalToConstant: 80),
-            imageViewProduct.widthAnchor.constraint(equalToConstant: 80),
-            imageViewProduct.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            labelDescription.topAnchor.constraint(equalTo: imageViewProduct.bottomAnchor, constant: 16),
-            labelDescription.leadingAnchor.constraint(equalTo: buttonBack.trailingAnchor, constant: 16),
+            labelTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageViewProduct.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 24),
+            labelDescription.topAnchor.constraint(equalTo: imageViewProduct.bottomAnchor, constant: 20),
+            labelDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             labelDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            labelDescription.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
+            labelDescription.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
     private func setupData() {
         let productDetail = viewModel.getProductDetail()
         labelTitle.text = productDetail.title
-        labelDescription.text = productDetail.description
         if let imageURL = productDetail.imageURL {
             let url = URL(string: imageURL)
             imageViewProduct.kf.setImage(with: url,
-                                         placeholder: UIImage(named: "ic-photo"))
+                                         placeholder: UIImage(named: "ic-placeholder-image"))
         } else {
-            imageViewProduct.image = UIImage(named: "ic-photo")
+            imageViewProduct.image = UIImage(named: "ic-placeholder-image")
+        }
+        labelDescription.text = productDetail.description
+        labelDescription.sizeToFit()
+    }
+    
+    private func setupImageType() {
+        let productDetail = viewModel.getProductDetail()
+        switch productDetail.type {
+        case .spotlight:
+            imageViewProduct.heightAnchor.constraint(equalToConstant: 160).isActive = true
+            imageViewProduct.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32).isActive = true
+            imageViewProduct.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32).isActive = true
+        case .cash:
+            imageViewProduct.heightAnchor.constraint(equalToConstant: 96).isActive = true
+            imageViewProduct.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32).isActive = true
+            imageViewProduct.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32).isActive = true
+        case .product:
+            imageViewProduct.heightAnchor.constraint(equalToConstant: 70).isActive = true
+            imageViewProduct.widthAnchor.constraint(equalToConstant: 70).isActive = true
+            imageViewProduct.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         }
     }
 }

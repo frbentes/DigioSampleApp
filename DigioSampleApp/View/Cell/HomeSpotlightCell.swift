@@ -15,16 +15,15 @@ class HomeSpotlightCell: UICollectionViewCell {
     // MARK: - Views
     private lazy var viewContainer: UIView = {
         let view = UIView()
-        view.layer.cornerRadius = 20
-        view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
         return view
     }()
     
     private lazy var imageViewSpotlight: UIImageView = {
         let imageView = UIImageView(image: nil)
-        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -47,21 +46,17 @@ class HomeSpotlightCell: UICollectionViewCell {
 
     private func commonInit() {
         setupView()
-        
-        viewContainer.backgroundColor = .clear
-        
-        layer.shadowColor = UIColor(named: "gray-shadow")?.cgColor
-        layer.shadowOpacity = 0.12
-        layer.shadowOffset = .init(width: 0, height: 1)
-        layer.shadowRadius = 4
-        clipsToBounds = false
+        setupConstraints()
+    }
+    
+    override func layoutSubviews() {
+        viewContainer.roundedCorners()
+        contentView.shadowCorners()
     }
     
     private func setupView() {
         contentView.addSubview(viewContainer)
         viewContainer.addSubview(imageViewSpotlight)
-        
-        setupConstraints()
     }
     
     private func setupConstraints() {
@@ -70,8 +65,11 @@ class HomeSpotlightCell: UICollectionViewCell {
             viewContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
             viewContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
             viewContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
-            imageViewSpotlight.centerYAnchor.constraint(equalTo: viewContainer.centerYAnchor),
-            imageViewSpotlight.centerYAnchor.constraint(equalTo: viewContainer.centerYAnchor)
+            viewContainer.heightAnchor.constraint(equalToConstant: 160),
+            imageViewSpotlight.topAnchor.constraint(equalTo: viewContainer.topAnchor),
+            imageViewSpotlight.leadingAnchor.constraint(equalTo: viewContainer.leadingAnchor),
+            imageViewSpotlight.trailingAnchor.constraint(equalTo: viewContainer.trailingAnchor),
+            imageViewSpotlight.bottomAnchor.constraint(equalTo: viewContainer.bottomAnchor)
         ])
     }
     
