@@ -118,8 +118,9 @@ class HomeCashView: UIView {
         labelCash.text = String(line[1])
         if let bannerURL = data.bannerURL {
             let url = URL(string: bannerURL)
-            imageViewCash.kf.setImage(with: url,
-                                      placeholder: UIImage(named: "ic-placeholder-image"))
+            imageViewCash.kf.setImage(
+                with: url,
+                placeholder: UIImage(named: "ic-placeholder-image"))
         } else {
             imageViewCash.image = UIImage(named: "ic-placeholder-image")
         }

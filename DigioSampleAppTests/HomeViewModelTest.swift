@@ -63,6 +63,16 @@ final class HomeViewModelTest: XCTestCase {
         XCTAssert(mockViewDelegate.showGenericErrorCalled)
     }
     
+    func testResetHomeData() {
+        // When
+        sut.resetHomeData()
+        
+        // Assert
+        XCTAssertEqual(sut.getSpotlightItems().count, 0)
+        XCTAssertNil(sut.getCashData())
+        XCTAssertEqual(sut.getProducts().count, 0)
+    }
+    
     func testOpenProductDetail() {
         // Given
         let productDetail = StubGenerator().stubProductDetail()
@@ -133,15 +143,17 @@ class StubGenerator {
         } catch {
             print("parse error")
         }
-        return HomeData(spotlight: [],
-                        products: [],
-                        cash: Cash(title: "teste", bannerURL: nil, description: "teste"))
+        return HomeData(
+            spotlight: [],
+            products: [],
+            cash: Cash(title: "teste", bannerURL: nil, description: "teste"))
     }
     
     func stubProductDetail() -> ProductDetail {
-        return ProductDetail(title: "digio Cash",
-                             imageURL: "https://s3-sa-east-1.amazonaws.com/digio-exame/cash_banner.png",
-                             description: "Dinheiro na conta sem complicaÃ§Ã£o.",
-                             type: .cash)
+        return ProductDetail(
+            title: "digio Cash",
+            imageURL: "https://s3-sa-east-1.amazonaws.com/digio-exame/cash_banner.png",
+            description: "Dinheiro na conta sem complicaÃ§Ã£o.",
+            type: .cash)
     }
 }

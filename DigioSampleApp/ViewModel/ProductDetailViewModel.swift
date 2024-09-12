@@ -6,15 +6,17 @@ protocol ProductDetailViewModelCoordinatorDelegate: AnyObject {
 }
 
 final class ProductDetailViewModel {
+    // MARK: - Variables
     private let productDetail: ProductDetail
     
     public weak var coordinatorDelegate: ProductDetailViewModelCoordinatorDelegate?
     
+    // MARK: - Initializer
     init(model: ProductDetail) {
         productDetail = model
     }
     
-    // MARK: - Public Gets
+    // MARK: - Functions
     public func getProductDetail() -> ProductDetail {
         return productDetail
     }

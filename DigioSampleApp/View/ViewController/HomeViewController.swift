@@ -2,8 +2,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
-    // MARK: - UI
+    // MARK: - Views
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,12 +45,14 @@ class HomeViewController: UIViewController {
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: layout)
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .clear
-        collectionView.register(HomeSpotlightCell.self,
-                                forCellWithReuseIdentifier: HomeSpotlightCell.identifier)
+        collectionView.register(
+            HomeSpotlightCell.self,
+            forCellWithReuseIdentifier: HomeSpotlightCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
@@ -80,11 +81,13 @@ class HomeViewController: UIViewController {
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: layout)
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(HomeProductCell.self,
-                                forCellWithReuseIdentifier: HomeProductCell.identifier)
+        collectionView.register(
+            HomeProductCell.self,
+            forCellWithReuseIdentifier: HomeProductCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
@@ -99,12 +102,14 @@ class HomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Initializer
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -115,18 +120,18 @@ class HomeViewController: UIViewController {
         viewModel.viewDelegate = self
         viewModel.getHomeData()
     }
-        
+    
+    // MARK: - Functions
     private func configureUI() {
-        view.addSubview(activityIndicator)
         view.addSubview(scrollView)
+        view.addSubview(activityIndicator)
         view.addSubview(viewError)
-        scrollView.addSubview(viewContent)
         viewContent.addSubview(viewGreeting)
         viewContent.addSubview(collectionViewSpotlight)
         viewContent.addSubview(viewCash)
         viewContent.addSubview(labelProducts)
         viewContent.addSubview(collectionViewProduct)
-        configureRefreshControl()
+        scrollView.addSubview(viewContent)
     }
     
     private func setupConstraints() {
@@ -174,32 +179,33 @@ class HomeViewController: UIViewController {
         ])
     }
     
-    func configureRefreshControl() {
-        scrollView.refreshControl = UIRefreshControl()
-        scrollView.refreshControl?.addTarget(self,
-                                             action: #selector(handleRefreshControl),
-                                             for: .valueChanged)
-    }
-    
-    private func updateData() {
-        collectionViewSpotlight.reloadData()
-        viewCash.data = self.viewModel.getCashData()
-        collectionViewProduct.reloadData()
+    private func reloadViews() {
+        DispatchQueue.main.async {
+            self.collectionViewSpotlight.reloadData()
+            self.viewCash.data = self.viewModel.getCashData()
+            self.collectionViewProduct.reloadData()
+        }
     }
     
     private func enableViews() {
-        scrollView.isScrollEnabled = true
-        viewContent.isHidden = false
+        DispatchQueue.main.async {
+            self.scrollView.isScrollEnabled = true
+            self.viewContent.isHidden = false
+        }
     }
     
     private func disableViews() {
-        scrollView.isScrollEnabled = false
-        viewContent.isHidden = true
+        DispatchQueue.main.async {
+            self.scrollView.isScrollEnabled = false
+            self.viewContent.isHidden = true
+        }
     }
     
     private func showErrorView(message: String) {
-        viewError.setErrorMessage(message)
-        viewError.isHidden = false
+        DispatchQueue.main.async {
+            self.viewError.setErrorMessage(message)
+            self.viewError.isHidden = false
+        }
     }
     
     private func hideErrorView() {
@@ -207,68 +213,58 @@ class HomeViewController: UIViewController {
     }
     
     private func setActivityIndicatorHidden(_ hidden: Bool) {
-        if hidden {
-            activityIndicator.stopAnimating()
-            activityIndicator.isHidden = true
-        } else {
-            activityIndicator.startAnimating()
-            activityIndicator.isHidden = false
+        DispatchQueue.main.async {
+            if hidden {
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+            } else {
+                self.activityIndicator.startAnimating()
+                self.activityIndicator.isHidden = false
+            }
         }
     }
 }
 
+// MARK: - HomeViewModelDelegate
 extension HomeViewController: HomeViewModelDelegate {
     func startLoadingData() {
-        DispatchQueue.main.async {
-            self.disableViews()
-            self.setActivityIndicatorHidden(false)
-        }
+        disableViews()
+        setActivityIndicatorHidden(false)
     }
     
     func finishLoadingData() {
-        DispatchQueue.main.async {
-            self.enableViews()
-            self.setActivityIndicatorHidden(true)
-        }
+        enableViews()
+        setActivityIndicatorHidden(true)
     }
     
     func showHomeData(homeData: HomeData) {
-        DispatchQueue.main.async {
-            self.updateData()
-        }
+        reloadViews()
     }
     
     func showGenericError(message: String) {
-        DispatchQueue.main.async {
-            self.updateData()
-            self.disableViews()
-            self.showErrorView(message: message)
-        }
+        reloadViews()
+        disableViews()
+        showErrorView(message: message)
     }
 }
 
-@objc extension HomeViewController {
-    func handleRefreshControl() {
-        viewModel.getHomeData()
-        DispatchQueue.main.async {
-            self.scrollView.refreshControl?.endRefreshing()
-        }
-    }
-}
-
+// MARK: - HomeCashViewDelegate
 extension HomeViewController: HomeCashViewDelegate {
     func tapCashView() {
         let cashData = viewModel.getCashData()
         guard let cashData = cashData else {
             return
         }
-        let productDetail = ProductDetail(title: cashData.title, 
-                                          imageURL: cashData.bannerURL,
-                                          description: cashData.description, type: .cash)
+        let productDetail = ProductDetail(
+            title: cashData.title,
+            imageURL: cashData.bannerURL,
+            description: cashData.description,
+            type: .cash)
         viewModel.showProductDetail(productDetail: productDetail)
     }
 }
 
+// MARK: - ErrorViewDelegate
 extension HomeViewController: ErrorViewDelegate {
     func tapRetryButton() {
         hideErrorView()
@@ -276,6 +272,7 @@ extension HomeViewController: ErrorViewDelegate {
     }
 }
 
+// MARK: - CollectionView protocols
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

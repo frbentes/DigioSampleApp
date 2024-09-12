@@ -79,7 +79,8 @@ class HomeSpotlightCell: UICollectionViewCell {
             return
         }
         let url = URL(string: bannerURL)
-        imageViewSpotlight.kf.setImage(with: url,
-                                       placeholder: UIImage(named: "ic-placeholder-image"))
+        imageViewSpotlight.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "ic-placeholder-image"))
     }
 }

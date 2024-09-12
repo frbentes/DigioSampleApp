@@ -3,8 +3,7 @@ import UIKit
 import Kingfisher
 
 class ProductDetailViewController: UIViewController {
-    
-    // MARK: UI
+    // MARK: - Views
     private lazy var buttonBack: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -52,12 +51,14 @@ class ProductDetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Initializer
     init(viewModel: ProductDetailViewModel) {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
     }
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -74,6 +75,7 @@ class ProductDetailViewController: UIViewController {
         setupData()
     }
     
+    // MARK: - Functions
     private func configureUI() {
         view.addSubview(buttonBack)
         view.addSubview(labelTitle)
@@ -102,8 +104,9 @@ class ProductDetailViewController: UIViewController {
         labelTitle.text = productDetail.title
         if let imageURL = productDetail.imageURL {
             let url = URL(string: imageURL)
-            imageViewProduct.kf.setImage(with: url,
-                                         placeholder: UIImage(named: "ic-placeholder-image"))
+            imageViewProduct.kf.setImage(
+                with: url,
+                placeholder: UIImage(named: "ic-placeholder-image"))
         } else {
             imageViewProduct.image = UIImage(named: "ic-placeholder-image")
         }
@@ -130,6 +133,7 @@ class ProductDetailViewController: UIViewController {
     }
 }
 
+// MARK: - Actions
 @objc extension ProductDetailViewController {
     private func backButtonTapped(_ sender: UIButton) {
         viewModel.returnHomeScreen()

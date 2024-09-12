@@ -13,19 +13,20 @@ protocol HomeViewModelCoordinatorDelegate: AnyObject {
 }
 
 final class HomeViewModel {
+    // MARK: - Variables
     private var homeData: HomeData?
-    private var isLoadingHomeData: Bool = false
     
     public weak var viewDelegate: HomeViewModelDelegate?
     public weak var coordinatorDelegate: HomeViewModelCoordinatorDelegate?
     
     private let service: HomeServiceProtocol
     
+    // MARK: - Initializer
     init(service: HomeServiceProtocol = HomeService()) {
         self.service = service
     }
     
-    // MARK: - Public Gets
+    // MARK: - Functions
     public func getSpotlightItems() -> [Spotlight] {
         var spotlightItems: [Spotlight] = []
         guard let homeData = homeData else {
@@ -49,11 +50,9 @@ final class HomeViewModel {
     }
     
     public func getHomeData() {
-        self.isLoadingHomeData = true
         self.viewDelegate?.startLoadingData()
         service.fetchProducts(completion: { [weak self] (homeData, error) in
             guard let self = self else { return }
-            self.isLoadingHomeData = false
             self.homeData = homeData
             self.viewDelegate?.finishLoadingData()
             if let homeData = homeData {
@@ -71,13 +70,17 @@ final class HomeViewModel {
         let message: String
         switch error {
         case .invalidData:
-            message = "Dados inválidos."
+            message = "Ocorreu um erro ao solicitar os dados."
         case .invalidResponse:
             message = "Resposta inválida."
         case .message(let err):
             message = err?.localizedDescription ?? "Sem mensagem de erro disponível."
         }
         return message
+    }
+    
+    public func resetHomeData() {
+        self.homeData = nil
     }
     
     public func showProductDetail(productDetail: ProductDetail) {

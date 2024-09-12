@@ -293,6 +293,7 @@
 			mainGroup = 469C33E32C8237BC0007A698;
 			packageReferences = (
 				469C34432C87B0CA0007A698 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				469C34582C9275320007A698 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = 469C33ED2C8237BC0007A698 /* Products */;
 			projectDirPath = "";
@@ -342,6 +343,7 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]\nthen\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -650,6 +652,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 7.0.0;
+			};
+		};
+		469C34582C9275320007A698 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.57.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

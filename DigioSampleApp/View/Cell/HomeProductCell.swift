@@ -79,7 +79,8 @@ class HomeProductCell: UICollectionViewCell {
             return
         }
         let url = URL(string: imageURL)
-        imageViewProduct.kf.setImage(with: url,
-                                     placeholder: UIImage(named: "ic-placeholder-image"))
+        imageViewProduct.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "ic-placeholder-image"))
     }
 }
