@@ -117,9 +117,9 @@ class HomeViewController: UIViewController {
     }
         
     private func configureUI() {
-        view.addSubview(viewError)
         view.addSubview(activityIndicator)
         view.addSubview(scrollView)
+        view.addSubview(viewError)
         scrollView.addSubview(viewContent)
         viewContent.addSubview(viewGreeting)
         viewContent.addSubview(collectionViewSpotlight)

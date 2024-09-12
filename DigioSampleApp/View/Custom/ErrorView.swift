@@ -33,13 +33,14 @@ final class ErrorView: UIView {
     }()
     
     private lazy var buttonRetry: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(named: "blue-brand")
-        button.layer.cornerRadius = 20
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        button.layer.cornerRadius = 10
         button.setTitle("Tentar novamente", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         button.addTarget(self, action: #selector(didTapRetry), for: .touchUpInside)
         return button
     }()

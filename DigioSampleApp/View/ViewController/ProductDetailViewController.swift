@@ -6,7 +6,7 @@ class ProductDetailViewController: UIViewController {
     
     // MARK: UI
     private lazy var buttonBack: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "ic-arrow"), for: .normal)
         button.imageView?.transform = .init(rotationAngle: .pi)
