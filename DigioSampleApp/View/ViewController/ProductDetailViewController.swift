@@ -1,6 +1,7 @@
 
 import UIKit
 import Kingfisher
+import os
 
 class ProductDetailViewController: UIViewController {
     // MARK: - Views
@@ -57,13 +58,19 @@ class ProductDetailViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
     }
-    
+
+    deinit {
+        OSSignposter.navigation.emitEvent("ProductDetail deinit")
+    }
+
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         configureUI()
+     
+        
         setupConstraints()
     }
     

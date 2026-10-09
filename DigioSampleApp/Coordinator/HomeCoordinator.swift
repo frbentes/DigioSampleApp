@@ -1,5 +1,10 @@
 
 import UIKit
+import os
+
+extension OSSignposter {
+    static let navigation = OSSignposter(subsystem: "com.digio.sample", category: .pointsOfInterest)
+}
 
 class HomeCoordinator: BaseCoordinator {
     weak var delegate: CoordinatorDelegate?
@@ -25,6 +30,7 @@ class HomeCoordinator: BaseCoordinator {
 
 extension HomeCoordinator: HomeViewModelCoordinatorDelegate {
     func openProductDetail(_ productDetail: ProductDetail) {
+        OSSignposter.navigation.emitEvent("openProductDetail")
         let viewModel = ProductDetailViewModel(model: productDetail)
         viewModel.coordinatorDelegate = self
         productDetailView = ProductDetailViewController(viewModel: viewModel)
@@ -34,6 +40,7 @@ extension HomeCoordinator: HomeViewModelCoordinatorDelegate {
 
 extension HomeCoordinator: ProductDetailViewModelCoordinatorDelegate {
     func backHome() {
+        OSSignposter.navigation.emitEvent("backHome")
         navigationController?.popViewController(animated: true)
         productDetailView = nil
     }

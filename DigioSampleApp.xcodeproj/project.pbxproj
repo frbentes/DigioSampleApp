@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		469C33F02C8237BC0007A698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C33EF2C8237BC0007A698 /* AppDelegate.swift */; };
+		46A0C0DF2FE1000000C10810 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0C0DE2FE1000000C10810 /* SceneDelegate.swift */; };
 		469C33F92C8237BE0007A698 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 469C33F82C8237BE0007A698 /* Assets.xcassets */; };
 		469C34222C83D62B0007A698 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34212C83D62B0007A698 /* HomeModel.swift */; };
 		469C34242C83D6600007A698 /* ProductDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469C34232C83D6600007A698 /* ProductDetailModel.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		469C33EC2C8237BC0007A698 /* DigioSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigioSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		469C33EF2C8237BC0007A698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		46A0C0DE2FE1000000C10810 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		469C33F82C8237BE0007A698 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		469C33FD2C8237BE0007A698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		469C34022C8237BF0007A698 /* DigioSampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigioSampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				469C33EF2C8237BC0007A698 /* AppDelegate.swift */,
+				46A0C0DE2FE1000000C10810 /* SceneDelegate.swift */,
 				469C342D2C83DA120007A698 /* Coordinator */,
 				469C34322C83DC230007A698 /* Network */,
 				469C34202C83D5E00007A698 /* Model */,
@@ -357,6 +360,7 @@
 				469C34242C83D6600007A698 /* ProductDetailModel.swift in Sources */,
 				469C342C2C83D8530007A698 /* HomeViewModel.swift in Sources */,
 				469C33F02C8237BC0007A698 /* AppDelegate.swift in Sources */,
+				46A0C0DF2FE1000000C10810 /* SceneDelegate.swift in Sources */,
 				469C342F2C83DA7E0007A698 /* BaseCoordinator.swift in Sources */,
 				469C34342C83DC440007A698 /* HomeService.swift in Sources */,
 				469C34312C83DAC80007A698 /* HomeCoordinator.swift in Sources */,
@@ -526,6 +530,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -558,6 +563,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = "$(RECOMMENDED_IPHONEOS_DEPLOYMENT_TARGET)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
